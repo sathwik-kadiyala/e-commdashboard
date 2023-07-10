@@ -23,10 +23,8 @@ const SignUp = () => {
             }
         });
         result = await result.json();
-        console.warn(result);
+        console.warn(result);                      
         localStorage.setItem("user", JSON.stringify(result.result))
-        localStorage.setItem("token", JSON.stringify(result.auth))
-
         navigate('/')
     }
 
@@ -36,7 +34,7 @@ const SignUp = () => {
             <input className="inputBox" type="text" placeholder="Enter Name"
                 value={name} onChange={(e) => setName(e.target.value)}
             />
-            <input className="inputBox" type="text" placeholder="Enter Email"
+            <input className="inputBox" type="email" placeholder="Enter Email"
                 value={email} onChange={(e) => setEmail(e.target.value)}
             />
             <input className="inputBox" type="password" placeholder="Enter password"

@@ -8,11 +8,7 @@ const ProductList = () => {
     }, []);
 
     const getProducts = async () => {
-        let result = await fetch('http://localhost:5000/products',{
-            headers:{
-                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
-            }
-        });
+        let result = await fetch('http://localhost:5000/products');
         result = await result.json();
         setProducts(result);
     }
@@ -20,10 +16,7 @@ const ProductList = () => {
     const deleteProduct = async (id) => {
         console.warn(id)
         let result = await fetch(`http://localhost:5000/product/${id}`, {
-            method: "Delete",
-            headers:{
-                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
-            }
+            method: "Delete"
         });
         result = await result.json();
         if (result) {
@@ -48,7 +41,7 @@ const ProductList = () => {
     return (
         <div className="product-list">
             <h3>Product List</h3>
-            <input type="" className='search-product-box' placeholder='Search Product'
+            <input type="" className='search-product-box' placeholder='Search Product by Name ,Price or Category.'
             onChange={searchHandle}
              />
             <ul>
@@ -64,7 +57,7 @@ const ProductList = () => {
                     <ul key={item._id}>
                         <li>{index + 1}</li>
                         <li>{item.name}</li>
-                        <li>{item.price}</li>
+                        <li>₹{item.price}</li>
                         <li>{item.category}</li>
                         <li>
                             <button onClick={() => deleteProduct(item._id)}>Delete</button>

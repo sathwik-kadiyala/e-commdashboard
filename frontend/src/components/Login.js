@@ -23,9 +23,9 @@ const Login = () => {
         });
         result = await result.json();
         console.warn(result)
-        if (result.auth) {
-            localStorage.setItem('user', JSON.stringify(result.user));
-            localStorage.setItem('token', JSON.stringify(result.auth));
+        if (result) {
+            localStorage.setItem('user', JSON.stringify(result));
+           
             navigate("/")
         } else {
             alert("Please enter connect details")
@@ -35,7 +35,7 @@ const Login = () => {
     return (
         <div className='login'>
             <h1>Login</h1>
-            <input type="text" className="inputBox" placeholder='Enter Email'
+            <input type="email" className="inputBox" placeholder='Enter Email'
                 onChange={(e) => setEmail(e.target.value)} value={email} />
             <input type="password" className="inputBox" placeholder='Enter Password'
                 onChange={(e) => setPassword(e.target.value)} value={password} />
