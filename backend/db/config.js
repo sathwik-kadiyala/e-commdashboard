@@ -1,3 +1,3 @@
 const mongoose= require('mongoose');
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb://127.0.0.1:27017/e-commerce")
+mongoose.connect("mongodb+srv://sathwikkadiyala:sathwik@cluster0.nreigfl.mongodb.net/?retryWrites=true&w=majority")
